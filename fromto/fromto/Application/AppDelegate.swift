@@ -3,8 +3,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    let appDIContainer = AppDIContainer()
-    var appFlowCoordinator: AppFlowCoordinator?
+//    let appDIContainer = AppDIContainer()
+//    var appFlowCoordinator: AppFlowCoordinator?
     var window: UIWindow?
     
     func application(
@@ -12,23 +12,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         
-        AppAppearance.setupAppearance()
+        
+        
+//        AppAppearance.setupAppearance()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
-
-        window?.rootViewController = navigationController
-        appFlowCoordinator = AppFlowCoordinator(
-            navigationController: navigationController,
-            appDIContainer: appDIContainer
-        )
-        appFlowCoordinator?.start()
+//        let navigationController = UINavigationController()
+//
+//        window?.rootViewController = navigationController
+        let homeViewController = HomeViewController()
+        window?.rootViewController = homeViewController
+//        appFlowCoordinator = AppFlowCoordinator(
+//            navigationController: navigationController,
+//            appDIContainer: appDIContainer
+//        )
+//        appFlowCoordinator?.start()
         window?.makeKeyAndVisible()
     
         return true
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        CoreDataStorage.shared.saveContext()
-    }
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//        CoreDataStorage.shared.saveContext()
+//    }
 }
