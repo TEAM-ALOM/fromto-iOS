@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		394258442A62FB4E0070D956 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394258432A62FB4E0070D956 /* BottomSheetViewController.swift */; };
 		C0E3731A2A26322F001D0BF5 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E3729F2A26322E001D0BF5 /* APIEndpoints.swift */; };
 		C0E3731B2A26322F001D0BF5 /* MoviesResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E372A12A26322E001D0BF5 /* MoviesResponseDTO+Mapping.swift */; };
 		C0E3731C2A26322F001D0BF5 /* MoviesRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E372A22A26322E001D0BF5 /* MoviesRequestDTO+Mapping.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		394258432A62FB4E0070D956 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		C0E372862A26320F001D0BF5 /* fromto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fromto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E3729F2A26322E001D0BF5 /* APIEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		C0E372A12A26322E001D0BF5 /* MoviesResponseDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoviesResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		394258452A62FB610070D956 /* BottomSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				394258432A62FB4E0070D956 /* BottomSheetViewController.swift */,
+			);
+			path = BottomSheetView;
+			sourceTree = "<group>";
+		};
 		C0E3727D2A26320F001D0BF5 = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +474,7 @@
 		C0E372DB2A26322E001D0BF5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				394258452A62FB610070D956 /* BottomSheetView */,
 				C0E372DC2A26322E001D0BF5 /* MoviesListViewController.storyboard */,
 				C0E372DD2A26322E001D0BF5 /* MoviesListTableView */,
 				C0E372E12A26322E001D0BF5 /* MoviesListViewController.swift */,
@@ -735,6 +746,7 @@
 				C0E373242A26322F001D0BF5 /* CoreDataStorage.xcdatamodeld in Sources */,
 				C0E3732E2A26322F001D0BF5 /* MoviesQueryListItemViewModel.swift in Sources */,
 				C0E373532A26322F001D0BF5 /* AppConfigurations.swift in Sources */,
+				394258442A62FB4E0070D956 /* BottomSheetViewController.swift in Sources */,
 				C0E373272A26322F001D0BF5 /* UserDefaultsMoviesQueriesStorage.swift in Sources */,
 				C0E373322A26322F001D0BF5 /* MoviesQueryListView.swift in Sources */,
 				C0E373552A26322F001D0BF5 /* AppDIContainer.swift in Sources */,
@@ -940,6 +952,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IMAGE_BASE_URL = "http://image.tmdb.org";
 				INFOPLIST_FILE = fromto/Resources/info.plist;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -967,6 +980,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IMAGE_BASE_URL = "http://image.tmdb.org";
 				INFOPLIST_FILE = fromto/Resources/info.plist;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
