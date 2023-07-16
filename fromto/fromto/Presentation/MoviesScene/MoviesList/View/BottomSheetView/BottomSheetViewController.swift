@@ -80,32 +80,31 @@ class BottomSheetViewController: UIViewController {
         
         st.layer.cornerRadius = 25.5
         st.clipsToBounds = true
-
+        
         return st
     }()
     
     // MARK: - 요일 버튼
     private func dayButton(_ title: String) -> UIButton {
         let button = UIButton(type: .custom)
-
+        
         //system cyan
         button.backgroundColor = .white
-
-        //클릭됐을 때 기준으로 임의로 생성
+        
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         
-        button.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside) // 버튼의 탭 이벤트에 대한 액션 추가
-
+        button.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside)
+        
         button.translatesAutoresizingMaskIntoConstraints = false
-
+        
         button.heightAnchor.constraint(equalToConstant: 36).isActive = true
         button.widthAnchor.constraint(equalToConstant: 36).isActive = true
-
+        
         button.layer.cornerRadius = 17
         button.clipsToBounds = true
-
+        
         return button
     }
     
@@ -130,9 +129,9 @@ class BottomSheetViewController: UIViewController {
     // MARK: - 시간 검색 버튼
     private func timeOptionButton(_ title: String) -> UIButton {
         let button = UIButton(type: .custom)
-
+        
         button.backgroundColor = .white
-
+        
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -141,20 +140,21 @@ class BottomSheetViewController: UIViewController {
         
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
-
+        
         button.translatesAutoresizingMaskIntoConstraints = false
-
+        
         button.heightAnchor.constraint(equalToConstant: 28).isActive = true
         button.widthAnchor.constraint(equalToConstant: 112).isActive = true
-
+        
         button.layer.cornerRadius = 15
         button.clipsToBounds = true
-
+        
         return button
     }
     
+    
     private var selectedTimeOptionButton: UIButton?
-
+    
     @objc private func timeOptionButtonTapped(_ sender: UIButton) {
         // 이전에 선택한 버튼의 색상 원래대로 변경
         if let selectedButton = selectedTimeOptionButton {
@@ -171,7 +171,21 @@ class BottomSheetViewController: UIViewController {
         sender.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         sender.layer.borderWidth = 0
         
-        // 선택한 버튼을 추적하기 위해 변수 업데이트
+        // 타이틀에 따른 동작 수행
+        switch sender.title(for: .normal) {
+        case "마감 시간으로 검색":
+            disableFirstButton()
+            break
+        case "오픈 시간으로 검색":
+            disableSecondButton()
+            break
+        case "영업 시간으로 검색":
+            ableButton()
+            break
+        default:
+            break
+        }
+        
         selectedTimeOptionButton = sender
     }
     
@@ -182,9 +196,64 @@ class BottomSheetViewController: UIViewController {
         st.distribution = .fillEqually
         st.alignment = .fill
         st.spacing = 4
-
+        
         return st
     }()
+    
+    
+    // MARK: - 시간 활성화 / 비활성화
+    private func disableFirstButton() {
+        if let firstButton = timeStackView.arrangedSubviews[0] as? UIButton {
+            firstButton.isEnabled = false
+            firstButton.backgroundColor = .white
+            
+            firstButton.layer.borderWidth = 1
+            firstButton.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
+            firstButton.setTitleColor(UIColor(displayP3Red: 198/255, green: 198/255, blue: 198/255, alpha: 1), for: .normal)
+        }
+        if let secondButton = timeStackView.arrangedSubviews[2] as? UIButton {
+            secondButton.isEnabled = true
+            secondButton.backgroundColor = UIColor(displayP3Red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            
+            secondButton.layer.borderWidth = 0
+            secondButton.setTitleColor(.black, for: .normal)
+        }
+    }
+    
+    private func disableSecondButton() {
+        if let firstButton = timeStackView.arrangedSubviews[0] as? UIButton {
+            firstButton.isEnabled = true
+            firstButton.backgroundColor = UIColor(displayP3Red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            
+            firstButton.layer.borderWidth = 0
+            firstButton.setTitleColor(.black, for: .normal)
+        }
+        if let secondButton = timeStackView.arrangedSubviews[2] as? UIButton {
+            secondButton.isEnabled = false
+            secondButton.backgroundColor = .white
+            
+            secondButton.layer.borderWidth = 1
+            secondButton.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
+            secondButton.setTitleColor(UIColor(displayP3Red: 198/255, green: 198/255, blue: 198/255, alpha: 1), for: .normal)
+        }
+    }
+    
+    private func ableButton() {
+        if let firstButton = timeStackView.arrangedSubviews[0] as? UIButton {
+            firstButton.isEnabled = true
+            firstButton.backgroundColor = UIColor(displayP3Red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            
+            firstButton.layer.borderWidth = 0
+            firstButton.setTitleColor(.black, for: .normal)
+        }
+        if let secondButton = timeStackView.arrangedSubviews[2] as? UIButton {
+            secondButton.isEnabled = true
+            secondButton.backgroundColor = UIColor(displayP3Red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            
+            secondButton.layer.borderWidth = 0
+            secondButton.setTitleColor(.black, for: .normal)
+        }
+    }
     
     // MARK: - 시간 스택
     lazy var timeStackView: UIStackView = {
@@ -196,7 +265,7 @@ class BottomSheetViewController: UIViewController {
         
         st.translatesAutoresizingMaskIntoConstraints = false
         st.heightAnchor.constraint(equalToConstant: 51).isActive = true
-
+        
         return st
     }()
     
@@ -218,79 +287,79 @@ class BottomSheetViewController: UIViewController {
     private func timeButton(_ title: String) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor(displayP3Red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
-
+        
         // 버튼 타이틀 설정
         let attributedTitle = NSMutableAttributedString(string: title)
         attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .semibold), range: NSRange(location: 0, length: 2)) // 오전/오후의 글자 크기 설정
         attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 32, weight: .semibold), range: NSRange(location: 2, length: title.count - 2)) // 시간의 글자 크기 설정
         attributedTitle.addAttribute(.baselineOffset, value: 6, range: NSRange(location: 0, length: 2)) // 오전/오후 베이스라인 조정
         button.setAttributedTitle(attributedTitle, for: .normal)
-
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 51).isActive = true
         button.widthAnchor.constraint(equalToConstant: 154).isActive = true
         button.layer.cornerRadius = 25.5
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(timeButtonTapped(_:)), for: .touchUpInside)
-
+        
         return button
     }
-
+    
     @objc private func timeButtonTapped(_ sender: UIButton) {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
-
+        
         let contentViewController = UIViewController()
         contentViewController.view.addSubview(datePicker)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             datePicker.topAnchor.constraint(equalTo: contentViewController.view.topAnchor),
             datePicker.leadingAnchor.constraint(equalTo: contentViewController.view.leadingAnchor),
             datePicker.trailingAnchor.constraint(equalTo: contentViewController.view.trailingAnchor),
             datePicker.bottomAnchor.constraint(equalTo: contentViewController.view.bottomAnchor)
         ])
-
+        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.setValue(contentViewController, forKey: "contentViewController")
-
+        
         let selectAction = UIAlertAction(title: "선택", style: .default) { _ in
             let selectedDate = datePicker.date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "a hh:mm" // 오전/오후 및 시간 형식 설정
             let selectedTime = dateFormatter.string(from: selectedDate)
-
+            
             let attributedTitle = NSMutableAttributedString(string: selectedTime)
             attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .semibold), range: NSRange(location: 0, length: 2)) // 오전/오후의 글자 크기 설정
             attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 32, weight: .semibold), range: NSRange(location: 2, length: selectedTime.count - 2)) // 시간의 글자 크기 설정
             attributedTitle.addAttribute(.baselineOffset, value: 6, range: NSRange(location: 0, length: 2)) // 오전/오후의 베이스라인 조정
             sender.setAttributedTitle(attributedTitle, for: .normal)
         }
-
+        
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-
+        
         alertController.addAction(selectAction)
         alertController.addAction(cancelAction)
-
+        
         present(alertController, animated: true, completion: nil)
     }
-
+    
     private var findButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
         button.setTitle("점포 찾기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-
+        
         button.translatesAutoresizingMaskIntoConstraints = false
-
+        
         button.heightAnchor.constraint(equalToConstant: 63).isActive = true
         button.widthAnchor.constraint(equalToConstant: 343).isActive = true
-
+        
         button.layer.cornerRadius = 31.5
         button.clipsToBounds = true
-
+        
         return button
     }()
     
@@ -311,7 +380,7 @@ class BottomSheetViewController: UIViewController {
         
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -337,7 +406,7 @@ class BottomSheetViewController: UIViewController {
         timeOptionButtonStackView.translatesAutoresizingMaskIntoConstraints = false
         timeStackView.translatesAutoresizingMaskIntoConstraints = false
         findButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             bottomSheetView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             bottomSheetView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
