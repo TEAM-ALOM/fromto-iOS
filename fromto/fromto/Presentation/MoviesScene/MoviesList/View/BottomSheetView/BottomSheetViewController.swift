@@ -145,7 +145,7 @@ class BottomSheetViewController: UIViewController {
     
     // MARK: - 시간 스택
     lazy var timeStackView: UIStackView = {
-        let st = UIStackView(arrangedSubviews: [timeButton("07:00"),imageView("arrow.right"),timeButton("23:00")])
+        let st = UIStackView(arrangedSubviews: [timeButton("오전 07:00"),imageView("arrow.right"),timeButton("오후 11:00")])
         st.axis = .horizontal
         st.distribution = .equalSpacing
         st.alignment = .center
@@ -175,32 +175,21 @@ class BottomSheetViewController: UIViewController {
     private func timeButton(_ title: String) -> UIButton {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor(displayP3Red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
-        
+
         // 버튼 타이틀 설정
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 32, weight: .semibold)
-        
-        // 이미지 설정
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 16)
-        let symbolImage = UIImage(systemName: "chevron.down", withConfiguration: symbolConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        button.setImage(symbolImage, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        
-        // 이미지와 타이틀 배치 방향 설정
-        button.semanticContentAttribute = .forceRightToLeft
-        
-        // 이미지와 타이틀 간격 조정
-        let spacing: CGFloat = 8
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
-        
+        let attributedTitle = NSMutableAttributedString(string: title)
+        attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .semibold), range: NSRange(location: 0, length: 2)) // 오전/오후의 글자 크기 설정
+        attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 32, weight: .semibold), range: NSRange(location: 2, length: title.count - 2)) // 시간의 글자 크기 설정
+        attributedTitle.addAttribute(.baselineOffset, value: 6, range: NSRange(location: 0, length: 2)) // 오전/오후 베이스라인 조정
+        button.setAttributedTitle(attributedTitle, for: .normal)
+
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 51).isActive = true
         button.widthAnchor.constraint(equalToConstant: 154).isActive = true
         button.layer.cornerRadius = 25.5
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(timeButtonTapped(_:)), for: .touchUpInside)
-        
+
         return button
     }
 
@@ -226,7 +215,48 @@ class BottomSheetViewController: UIViewController {
         let selectAction = UIAlertAction(title: "선택", style: .default) { _ in
             let selectedDate = datePicker.date
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm"
+            dateFormatter.dateFormat = "a hh:mm" // 오전/오후 및 시간 형식 설정
+            let selectedTime = dateFormatter.string(from: selectedDate)
+
+            let attributedTitle = NSMutableAttributedString(string: selectedTime)
+            attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .semibold), range: NSRange(location: 0, length: 2)) // 오전/오후의 글자 크기 설정
+            attributedTitle.addAttribute(.font, value: UIFont.systemFont(ofSize: 32, weight: .semibold), range: NSRange(location: 2, length: selectedTime.count - 2)) // 시간의 글자 크기 설정
+            attributedTitle.addAttribute(.baselineOffset, value: 6, range: NSRange(location: 0, length: 2)) // 오전/오후의 베이스라인 조정
+            sender.setAttributedTitle(attributedTitle, for: .normal)
+        }
+
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+
+        alertController.addAction(selectAction)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+
+
+    /*@objc private func timeButtonTapped(_ sender: UIButton) {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .time
+        datePicker.preferredDatePickerStyle = .wheels
+
+        let contentViewController = UIViewController()
+        contentViewController.view.addSubview(datePicker)
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: contentViewController.view.topAnchor),
+            datePicker.leadingAnchor.constraint(equalTo: contentViewController.view.leadingAnchor),
+            datePicker.trailingAnchor.constraint(equalTo: contentViewController.view.trailingAnchor),
+            datePicker.bottomAnchor.constraint(equalTo: contentViewController.view.bottomAnchor)
+        ])
+
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.setValue(contentViewController, forKey: "contentViewController")
+
+        let selectAction = UIAlertAction(title: "선택", style: .default) { _ in
+            let selectedDate = datePicker.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "a HH:mm"
             let selectedTime = dateFormatter.string(from: selectedDate)
 
             sender.setTitle(selectedTime, for: .normal)
@@ -238,7 +268,7 @@ class BottomSheetViewController: UIViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)
-    }
+    }*/
 
     private var findButton: UIButton = {
         let button = UIButton(type: .custom)
