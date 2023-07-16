@@ -233,43 +233,6 @@ class BottomSheetViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-
-    /*@objc private func timeButtonTapped(_ sender: UIButton) {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .time
-        datePicker.preferredDatePickerStyle = .wheels
-
-        let contentViewController = UIViewController()
-        contentViewController.view.addSubview(datePicker)
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: contentViewController.view.topAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: contentViewController.view.leadingAnchor),
-            datePicker.trailingAnchor.constraint(equalTo: contentViewController.view.trailingAnchor),
-            datePicker.bottomAnchor.constraint(equalTo: contentViewController.view.bottomAnchor)
-        ])
-
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.setValue(contentViewController, forKey: "contentViewController")
-
-        let selectAction = UIAlertAction(title: "선택", style: .default) { _ in
-            let selectedDate = datePicker.date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "a HH:mm"
-            let selectedTime = dateFormatter.string(from: selectedDate)
-
-            sender.setTitle(selectedTime, for: .normal)
-        }
-
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-
-        alertController.addAction(selectAction)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true, completion: nil)
-    }*/
-
     private var findButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
