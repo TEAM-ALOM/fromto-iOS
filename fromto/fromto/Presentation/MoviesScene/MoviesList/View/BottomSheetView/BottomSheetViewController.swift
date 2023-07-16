@@ -89,12 +89,14 @@ class BottomSheetViewController: UIViewController {
         let button = UIButton(type: .custom)
 
         //system cyan
-        button.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
+        button.backgroundColor = .white
 
         //클릭됐을 때 기준으로 임의로 생성
         button.setTitle(title, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        
+        button.addTarget(self, action: #selector(dayButtonTapped(_:)), for: .touchUpInside) // 버튼의 탭 이벤트에 대한 액션 추가
 
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -107,16 +109,35 @@ class BottomSheetViewController: UIViewController {
         return button
     }
     
+    private var selectedDayButton: UIButton?
+    
+    @objc private func dayButtonTapped(_ sender: UIButton) {
+        // 이전에 선택한 버튼의 색상 원래대로 변경
+        if let selectedButton = selectedDayButton {
+            selectedButton.backgroundColor = .white
+            selectedButton.setTitleColor(.black, for: .normal)
+            selectedButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        }
+        
+        // 선택한 버튼의 색상 변경
+        sender.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
+        sender.setTitleColor(.white, for: .normal)
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        
+        selectedDayButton = sender
+    }
+    
     // MARK: - 시간 검색 버튼
     private func timeOptionButton(_ title: String) -> UIButton {
         let button = UIButton(type: .custom)
 
         button.backgroundColor = .white
 
-        //클릭 안됐을 때 기준으로 임의로 생성
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        
+        button.addTarget(self, action: #selector(timeOptionButtonTapped(_:)), for: .touchUpInside)
         
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
@@ -130,6 +151,28 @@ class BottomSheetViewController: UIViewController {
         button.clipsToBounds = true
 
         return button
+    }
+    
+    private var selectedTimeOptionButton: UIButton?
+
+    @objc private func timeOptionButtonTapped(_ sender: UIButton) {
+        // 이전에 선택한 버튼의 색상 원래대로 변경
+        if let selectedButton = selectedTimeOptionButton {
+            selectedButton.backgroundColor = .white
+            selectedButton.setTitleColor(.black, for: .normal)
+            selectedButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            selectedButton.layer.borderWidth = 1
+            selectedButton.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
+        }
+        
+        // 선택한 버튼의 색상 변경
+        sender.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
+        sender.setTitleColor(.white, for: .normal)
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        sender.layer.borderWidth = 0
+        
+        // 선택한 버튼을 추적하기 위해 변수 업데이트
+        selectedTimeOptionButton = sender
     }
     
     // MARK: - 시간 검색 버튼 스택
