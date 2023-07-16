@@ -4,7 +4,7 @@
 target 'fromto' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for fromto
 pod 'Then'
+  # Pods for fromto
+
 end

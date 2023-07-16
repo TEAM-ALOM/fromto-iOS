@@ -1,0 +1,6 @@
+framework module Pods_fromto {
+  umbrella header "Pods-fromto-umbrella.h"
+
+  export *
+  module * { export * }
+}
