@@ -19,46 +19,36 @@ class BottomSheetViewController: UIViewController {
     }
     
     // MARK: - 선택 관련 라벨
-    private var dayLabel: UILabel = {
-        let label = UILabel()
-        label.text = "영업일 선택"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = UIColor.black
-        return label
-    }()
+    private var dayLabel = UILabel().then {
+        $0.text = "영업일 선택"
+        $0.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        $0.textColor = .black
+    }
     
-    private var timeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "영업 시간 선택"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = UIColor.black
-        return label
-    }()
+    private var timeLabel = UILabel().then {
+        $0.text = "영업 시간 선택"
+        $0.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        $0.textColor = .black
+    }
     
     // MARK: - grayLine
-    private var line1: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.backgroundColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 234/255, alpha: 1)
-        
-        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 345).isActive = true
-        
-        return view
-    }()
+    private var line1 = UIView().then {
+        $0.backgroundColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 234/255, alpha: 1)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            $0.heightAnchor.constraint(equalToConstant: 1),
+            $0.widthAnchor.constraint(equalToConstant: 345)
+        ])
+    }
     
-    private var line2: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.backgroundColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 234/255, alpha: 1)
-        
-        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 345).isActive = true
-        
-        return view
-    }()
+    private var line2 = UIView().then {
+        $0.backgroundColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 234/255, alpha: 1)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            $0.heightAnchor.constraint(equalToConstant: 1),
+            $0.widthAnchor.constraint(equalToConstant: 345)
+        ])
+    }
     
     // MARK: - 요일 버튼 스택
     lazy var buttonStackView: UIStackView = {
@@ -119,7 +109,7 @@ class BottomSheetViewController: UIViewController {
         }
         
         // 선택한 버튼의 색상 변경
-        sender.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
+        sender.backgroundColor = .black
         sender.setTitleColor(.white, for: .normal)
         sender.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
@@ -166,7 +156,7 @@ class BottomSheetViewController: UIViewController {
         }
         
         // 선택한 버튼의 색상 변경
-        sender.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
+        sender.backgroundColor = .black
         sender.setTitleColor(.white, for: .normal)
         sender.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         sender.layer.borderWidth = 0
@@ -208,7 +198,7 @@ class BottomSheetViewController: UIViewController {
             firstButton.backgroundColor = .white
             
             firstButton.layer.borderWidth = 1
-            firstButton.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
+            firstButton.layer.borderColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 234/255, alpha: 1).cgColor
             firstButton.setTitleColor(UIColor(displayP3Red: 198/255, green: 198/255, blue: 198/255, alpha: 1), for: .normal)
         }
         if let secondButton = timeStackView.arrangedSubviews[2] as? UIButton {
@@ -233,7 +223,7 @@ class BottomSheetViewController: UIViewController {
             secondButton.backgroundColor = .white
             
             secondButton.layer.borderWidth = 1
-            secondButton.layer.borderColor = UIColor(displayP3Red: 217/255, green: 217/255, blue: 217/255, alpha: 1).cgColor
+            secondButton.layer.borderColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 234/255, alpha: 1).cgColor
             secondButton.setTitleColor(UIColor(displayP3Red: 198/255, green: 198/255, blue: 198/255, alpha: 1), for: .normal)
         }
     }
@@ -345,57 +335,51 @@ class BottomSheetViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    private var findButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.backgroundColor = UIColor(displayP3Red: 50/255, green: 173/255, blue: 230/255, alpha: 1)
-        button.setTitle("점포 찾기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+    private var findButton = UIButton().then {
+        $0.backgroundColor = .black
+        $0.setTitle("점포 찾기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.heightAnchor.constraint(equalToConstant: 63).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 343).isActive = true
-        
-        button.layer.cornerRadius = 31.5
-        button.clipsToBounds = true
-        
-        return button
-    }()
-    
-    lazy var bottomSheetView: UIView = {
-        let view = UIView()
-        
-        view.layer.cornerRadius = 31.5
-        view.clipsToBounds = true
-        
-        view.backgroundColor = .white
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
+        $0.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 420),
-            view.widthAnchor.constraint(equalToConstant: 394)
+            $0.heightAnchor.constraint(equalToConstant: 63),
+            $0.widthAnchor.constraint(equalToConstant: 343)
         ])
         
-        return view
-    }()
+        $0.layer.cornerRadius = 31.5
+        $0.clipsToBounds = true
+    }
+    
+    lazy var bottomSheetView = UIView().then {
+        $0.layer.cornerRadius = 31.5
+        $0.clipsToBounds = true
+        $0.backgroundColor = .white
+        
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            $0.heightAnchor.constraint(equalToConstant: 420),
+            $0.widthAnchor.constraint(equalToConstant: 394)
+        ])
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .lightGray
-        view.addSubview(bottomSheetView)
-        view.addSubview(spaceLabel)
-        view.addSubview(line1)
-        view.addSubview(timeLabel)
-        view.addSubview(buttonStackView)
-        view.addSubview(line2)
-        view.addSubview(dayLabel)
-        view.addSubview(timeOptionButtonStackView)
-        view.addSubview(timeStackView)
-        view.addSubview(findButton)
+        addSubView()
+        autoLayoutView()
         
+    }
+    func addSubView(){
+        [bottomSheetView, spaceLabel, line1, timeLabel, buttonStackView, line2, dayLabel, timeOptionButtonStackView, timeStackView, findButton].forEach {
+            view.addSubview($0)
+        }
+    }
+    
+    
+    func autoLayoutView() {
         bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
         spaceLabel.translatesAutoresizingMaskIntoConstraints = false
         line1.translatesAutoresizingMaskIntoConstraints = false
