@@ -394,9 +394,9 @@ class BottomSheetViewController: UIViewController {
         NSLayoutConstraint.activate([
             bottomSheetView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             bottomSheetView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            bottomSheetView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 434),
+            bottomSheetView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 382),
             
-            spaceLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 459),
+            spaceLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 407),
             spaceLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 24),
             
             line1.topAnchor.constraint(equalTo: spaceLabel.bottomAnchor, constant: 16),

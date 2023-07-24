@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		394258442A62FB4E0070D956 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394258432A62FB4E0070D956 /* BottomSheetViewController.swift */; };
 		3974CC6D2A683EBD00233F27 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3974CC6C2A683EBD00233F27 /* Then */; };
+		3974CC842A6D72E900233F27 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974CC832A6D72E900233F27 /* TabBarViewController.swift */; };
 		C0E3731A2A26322F001D0BF5 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E3729F2A26322E001D0BF5 /* APIEndpoints.swift */; };
 		C0E3731B2A26322F001D0BF5 /* MoviesResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E372A12A26322E001D0BF5 /* MoviesResponseDTO+Mapping.swift */; };
 		C0E3731C2A26322F001D0BF5 /* MoviesRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E372A22A26322E001D0BF5 /* MoviesRequestDTO+Mapping.swift */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		394258432A62FB4E0070D956 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		3974CC832A6D72E900233F27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C0E372862A26320F001D0BF5 /* fromto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fromto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E3729F2A26322E001D0BF5 /* APIEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		C0E372A12A26322E001D0BF5 /* MoviesResponseDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoviesResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				394258432A62FB4E0070D956 /* BottomSheetViewController.swift */,
+				3974CC832A6D72E900233F27 /* TabBarViewController.swift */,
 			);
 			path = BottomSheetView;
 			sourceTree = "<group>";
@@ -185,7 +188,6 @@
 			children = (
 				C0E372882A26320F001D0BF5 /* fromto */,
 				C0E372872A26320F001D0BF5 /* Products */,
-				CCBF033F96EE2ADC3FF35DE5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -653,13 +655,6 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		CCBF033F96EE2ADC3FF35DE5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -787,6 +782,7 @@
 				C0E3732F2A26322F001D0BF5 /* MoviesQueriesItemCell.swift in Sources */,
 				C0E373452A26322F001D0BF5 /* Alertable.swift in Sources */,
 				C0E373402A26322F001D0BF5 /* DataTransferError+ConnectionError.swift in Sources */,
+				3974CC842A6D72E900233F27 /* TabBarViewController.swift in Sources */,
 				C0E373582A26322F001D0BF5 /* ConnectionError.swift in Sources */,
 				C0E373362A26322F001D0BF5 /* MoviesSearchFlowCoordinator.swift in Sources */,
 				C0E3735A2A26322F001D0BF5 /* FetchRecentMovieQueriesUseCase.swift in Sources */,
