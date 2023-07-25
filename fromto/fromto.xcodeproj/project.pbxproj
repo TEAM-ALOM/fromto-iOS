@@ -10,6 +10,8 @@
 		394258442A62FB4E0070D956 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394258432A62FB4E0070D956 /* BottomSheetViewController.swift */; };
 		3974CC6D2A683EBD00233F27 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3974CC6C2A683EBD00233F27 /* Then */; };
 		3974CC7B2A6D39C200233F27 /* FromToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974CC7A2A6D39C200233F27 /* FromToColor.swift */; };
+		3974CC862A6FE5F900233F27 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974CC852A6FE5F900233F27 /* BaseViewController.swift */; };
+		3974CC892A6FE99200233F27 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3974CC882A6FE99200233F27 /* SnapKit */; };
 		C0E3731A2A26322F001D0BF5 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E3729F2A26322E001D0BF5 /* APIEndpoints.swift */; };
 		C0E3731B2A26322F001D0BF5 /* MoviesResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E372A12A26322E001D0BF5 /* MoviesResponseDTO+Mapping.swift */; };
 		C0E3731C2A26322F001D0BF5 /* MoviesRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E372A22A26322E001D0BF5 /* MoviesRequestDTO+Mapping.swift */; };
@@ -85,6 +87,7 @@
 /* Begin PBXFileReference section */
 		394258432A62FB4E0070D956 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		3974CC7A2A6D39C200233F27 /* FromToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToColor.swift; sourceTree = "<group>"; };
+		3974CC852A6FE5F900233F27 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C0E372862A26320F001D0BF5 /* fromto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fromto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E3729F2A26322E001D0BF5 /* APIEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		C0E372A12A26322E001D0BF5 /* MoviesResponseDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoviesResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3974CC6D2A683EBD00233F27 /* Then in Frameworks */,
+				3974CC892A6FE99200233F27 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				394258432A62FB4E0070D956 /* BottomSheetViewController.swift */,
+				3974CC852A6FE5F900233F27 /* BaseViewController.swift */,
 			);
 			path = BottomSheetView;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 			name = fromto;
 			packageProductDependencies = (
 				3974CC6C2A683EBD00233F27 /* Then */,
+				3974CC882A6FE99200233F27 /* SnapKit */,
 			);
 			productName = fromto;
 			productReference = C0E372862A26320F001D0BF5 /* fromto.app */;
@@ -713,6 +719,7 @@
 			mainGroup = C0E3727D2A26320F001D0BF5;
 			packageReferences = (
 				3974CC6B2A683EBD00233F27 /* XCRemoteSwiftPackageReference "Then" */,
+				3974CC872A6FE99200233F27 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = C0E372872A26320F001D0BF5 /* Products */;
 			projectDirPath = "";
@@ -763,6 +770,7 @@
 				C0E373222A26322F001D0BF5 /* MoviesResponseStorage.swift in Sources */,
 				C0E373482A26322F001D0BF5 /* DataTransferService.swift in Sources */,
 				C0E373242A26322F001D0BF5 /* CoreDataStorage.xcdatamodeld in Sources */,
+				3974CC862A6FE5F900233F27 /* BaseViewController.swift in Sources */,
 				C0E3732E2A26322F001D0BF5 /* MoviesQueryListItemViewModel.swift in Sources */,
 				C0E373532A26322F001D0BF5 /* AppConfigurations.swift in Sources */,
 				394258442A62FB4E0070D956 /* BottomSheetViewController.swift in Sources */,
@@ -1046,6 +1054,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		3974CC872A6FE99200233F27 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1053,6 +1069,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3974CC6B2A683EBD00233F27 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		3974CC882A6FE99200233F27 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3974CC872A6FE99200233F27 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
