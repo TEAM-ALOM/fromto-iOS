@@ -12,10 +12,6 @@ class BottomSheetViewController: BaseViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        addSubView()
-        autoLayoutView()
-        
     }
     
 }
