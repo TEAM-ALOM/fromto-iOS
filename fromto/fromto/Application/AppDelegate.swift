@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let TabBarViewController = TabBarViewController()
-        window?.rootViewController = TabBarViewController
+        let ViewController = BottomSheetViewController()
+        window?.rootViewController = ViewController
 
         window?.makeKeyAndVisible()
     
