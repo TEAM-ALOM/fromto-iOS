@@ -12,7 +12,6 @@ class BottomSheetViewController: BaseViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
+    
 }
