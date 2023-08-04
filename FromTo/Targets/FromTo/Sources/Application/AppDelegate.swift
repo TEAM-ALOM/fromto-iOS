@@ -3,7 +3,9 @@ import UIKit
 @available(iOS 13.4, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    let appDIContainer = AppDIContainer()
+    var appFlowCoordinator: AppFlowCoordinator?
     var window: UIWindow?
     
     func application(
@@ -13,9 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let ViewController = BottomSheetViewController()
-        window?.rootViewController = ViewController
+//        let ViewController = BottomSheetViewController()
+//        window?.rootViewController = ViewController
+//
+//        window?.makeKeyAndVisible()
+        
+        let navigationController = UINavigationController()
 
+        window?.rootViewController = navigationController
+        appFlowCoordinator = AppFlowCoordinator(
+            navigationController: navigationController,
+            appDIContainer: appDIContainer
+        )
+        appFlowCoordinator?.start()
         window?.makeKeyAndVisible()
     
         return true

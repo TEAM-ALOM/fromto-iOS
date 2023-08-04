@@ -18,5 +18,10 @@ final class AppFlowCoordinator {
 //        let moviesSceneDIContainer = appDIContainer.makeMoviesSceneDIContainer()
 //        let flow = moviesSceneDIContainer.makeMoviesSearchFlowCoordinator(navigationController: navigationController)
 //        flow.start()
+        
+        let mapSceneDIContainer = appDIContainer.makeMapSceneDIContainer()
+        let flow = mapSceneDIContainer.makeMapSearchFlowCoordinator(navigationController: navigationController)
+        
+        flow.start()
     }
 }

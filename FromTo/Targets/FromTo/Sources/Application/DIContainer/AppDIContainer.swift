@@ -26,6 +26,11 @@ final class AppDIContainer {
     }()
     
     // MARK: - DIContainers of scenes
+    func makeMapSceneDIContainer() -> MapSceneDIContainer {
+        let dependencies = MapSceneDIContainer.Dependencies()
+        
+        return MapSceneDIContainer(dependencies: dependencies)
+    }
 //    func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {
 //        let dependencies = MoviesSceneDIContainer.Dependencies(
 //            apiDataTransferService: apiDataTransferService,
