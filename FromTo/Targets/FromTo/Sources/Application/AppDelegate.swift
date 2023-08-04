@@ -1,6 +1,5 @@
 import UIKit
 
-@available(iOS 13.4, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -12,24 +11,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        
         window = UIWindow(frame: UIScreen.main.bounds)
-
-//        let ViewController = BottomSheetViewController()
-//        window?.rootViewController = ViewController
-//
-//        window?.makeKeyAndVisible()
         
         let navigationController = UINavigationController()
-
         window?.rootViewController = navigationController
+        
         appFlowCoordinator = AppFlowCoordinator(
             navigationController: navigationController,
             appDIContainer: appDIContainer
         )
         appFlowCoordinator?.start()
+        
         window?.makeKeyAndVisible()
-    
+        
         return true
     }
 

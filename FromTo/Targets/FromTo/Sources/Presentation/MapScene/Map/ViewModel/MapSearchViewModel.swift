@@ -8,17 +8,33 @@
 
 import Foundation
 
-final class MapSearchViewModel {
-    struct Input {
-        let viewDidLoad: Observable<Void>
-    }
-    
-    struct Output {
-        
-    }
-    
+class BaseViewModel {
     init() {
         
+    }
+}
+
+public struct MapSearchAction { }
+
+public struct MapSearchInput {
+    let viewDidLoad: Observable<Void> = .init(())
+}
+
+public struct MapSearchOutput {
+    
+}
+
+final class MapSearchViewModel: BaseViewModel {
+    var action: MapSearchAction
+    var input: MapSearchInput
+    var output: MapSearchOutput
+    
+    init(action: MapSearchAction) {
+        self.action = action
+        self.input = .init()
+        self.output = .init()
+        
+        super.init()
     }
 }
 
