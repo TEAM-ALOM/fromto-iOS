@@ -1,6 +1,6 @@
-//import UIKit
-//import SwiftUI
-//
+import UIKit
+import SwiftUI
+
 //final class MoviesSceneDIContainer: MoviesSearchFlowCoordinatorDependencies {
 //    
 //    struct Dependencies {
@@ -15,7 +15,7 @@
 //    lazy var moviesResponseCache: MoviesResponseStorage = CoreDataMoviesResponseStorage()
 //
 //    init(dependencies: Dependencies) {
-//        self.dependencies = dependencies        
+//        self.dependencies = dependencies
 //    }
 //    
 //    // MARK: - Use Cases
