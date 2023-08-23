@@ -91,10 +91,7 @@ final class MapSearchViewController: BaseViewController {
 
 extension MapSearchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//        debugPrint(userLocation.coordinate)
-//        let defaultLocation = userLocation.coordinate
-//        let defaultSpanValue = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//        mapView.setRegion(MKCoordinateRegion(center: defaultLocation, span: defaultSpanValue), animated: true)
+        debugPrint(userLocation.coordinate)
     }
     
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
@@ -103,11 +100,5 @@ extension MapSearchViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print(view)
-    }
-}
-
-extension MapSearchViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        locationManager = manager
     }
 }
