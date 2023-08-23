@@ -31,9 +31,7 @@ final class MapSceneDIContainer: MapSearchFlowCoordinatorDependencies {
     }
     
     func makeMapSearchViewModel() -> MapSearchViewModel {
-        return MapSearchViewModel(
-            action: .init()
-        )
+        return MapSearchViewModel()
     }
 
     // MARK: - Flow Coordinators
