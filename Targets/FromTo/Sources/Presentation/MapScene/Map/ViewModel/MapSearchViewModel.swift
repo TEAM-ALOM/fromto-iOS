@@ -30,7 +30,6 @@ public final class MapSearchViewModel {
     }
     
     public struct State {
-        var tmp: PublishSubject<Int> = .init()
         var currentLocation: BehaviorRelay<CLLocation> = .init(value: .init())
     }
     

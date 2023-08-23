@@ -91,9 +91,48 @@ final class MapSearchViewController: BaseViewController {
 
 extension MapSearchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        debugPrint(userLocation.coordinate)
+        debugPrint(userLocation.location)
+        /*
+         let geoCoder = CLGeocoder()
+         guard let location = userLocation.location else { return }
+         
+         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+         
+         // Place details
+         var placeMark: CLPlacemark!
+         placeMark = placemarks?[0]
+         
+         // Address dictionary
+         print(placeMark.addressDictionary)
+         
+         // Location name
+         if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
+         print(locationName)
+         }
+         
+         // Street address
+         if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
+         print(street)
+         }
+         
+         // City
+         if let city = placeMark.addressDictionary!["City"] as? NSString {
+         print(city)
+         }
+         
+         // Zip code
+         if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
+         print(zip)
+         }
+         
+         // Country
+         if let country = placeMark.addressDictionary!["Country"] as? NSString {
+         print(country)
+         }
+         
+         })
+         */
     }
-    
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
         print(annotation)
     }
