@@ -71,7 +71,7 @@ extension Project {
             platform: platform,
             product: .app,
             bundleId: "com.alom.\(name)",
-            infoPlist: .extendingDefault(with: infoPlist),
+            infoPlist: .file(path: .relativeToRoot("Targets/\(name)/Support/InfoPlists/\(name)-Info.plist")),
             sources: ["Targets/\(name)/Sources/**"],
             resources: ["Targets/\(name)/Resources/**"],
             dependencies: dependencies

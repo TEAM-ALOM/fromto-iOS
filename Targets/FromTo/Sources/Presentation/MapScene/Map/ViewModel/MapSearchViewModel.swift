@@ -7,12 +7,10 @@
 //
 
 import Foundation
+import CoreLocation
 
-class BaseViewModel {
-    init() {
-        
-    }
-}
+import RxSwift
+import RxCocoa
 
 public struct MapSearchAction { }
 
@@ -24,16 +22,32 @@ public struct MapSearchOutput {
     
 }
 
-final class MapSearchViewModel: BaseViewModel {
-    var action: MapSearchAction
-    var input: MapSearchInput
-    var output: MapSearchOutput
+public final class MapSearchViewModel {
+    public var state: State
     
-    init(action: MapSearchAction) {
-        self.action = action
-        self.input = .init()
-        self.output = .init()
+    public enum Action {
+        case viewDidLoad
+    }
+    
+    public struct State {
+        var tmp: PublishSubject<Int> = .init()
+        var currentLocation: BehaviorRelay<CLLocation> = .init(value: .init())
+    }
+    
+    public init() {
+        state = .init()
         
-        super.init()
+        bind()
+    }
+    
+    public func send(_ action: Action) {
+        switch action {
+        case .viewDidLoad:
+            break
+        }
+    }
+    
+    private func bind() {
+        
     }
 }
